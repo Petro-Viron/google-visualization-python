@@ -27,7 +27,7 @@ Google Visualization API.
 __author__ = "Amit Weinstein, Misha Seltzer, Jacob Baskin"
 
 import cgi
-import cStringIO
+import io as cStringIO
 import csv
 import datetime
 try:

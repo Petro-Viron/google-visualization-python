@@ -307,7 +307,7 @@ class DataTable(object):
     elif isinstance(value, bool):
       return str(value).lower()
     else:
-      return str(value).decode("utf-8")
+      return str(value)
 
   @staticmethod
   def ColumnTypeParser(description):

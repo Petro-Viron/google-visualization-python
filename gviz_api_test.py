@@ -328,8 +328,8 @@ class DataTableTest(unittest.TestCase):
     self.assertEqual(4, table.NumberOfRows())
     self.assertEqual(json.dumps(json_obj,
                                 separators=(",", ":"),
-                                ensure_ascii=False).encode("utf-8"),
-                     table.ToJSon())
+                                ensure_ascii=False),
+                     table.ToJSon().decode('utf-8'))
     table.AppendData([[-1, "w", False]])
     self.assertEqual(5, table.NumberOfRows())
     json_obj["rows"].append({"c": [{"v": -1}, {"v": "w"}, {"v": False}]})

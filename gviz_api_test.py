@@ -98,16 +98,15 @@ class DataTableTest(unittest.TestCase):
                    r"two\\slash",
                    u"unicode eng",
                    u"unicode \u05e2\u05d1\u05e8\u05d9\u05ea",
-                   u"unicode \u05e2\u05d1\u05e8\u05d9\u05ea".encode("utf-8"),
+                   u"unicode \u05e2\u05d1\u05e8\u05d9\u05ea",
                    u'"\u05e2\u05d1\\"\u05e8\u05d9\u05ea"']
     table = DataTable([("a", "string")],
                       [[x] for x in the_strings])
-
-    json_obj = json.loads(table.ToJSon())
+    json_obj = json.loads(table.ToJSon().decode('utf-8'))
     for i, row in enumerate(json_obj["rows"]):
       utf8_str = the_strings[i]
-      if isinstance(utf8_str, unicode):
-        utf8_str = utf8_str.encode("utf-8")
+    #   if isinstance(utf8_str, unicode):
+    #     utf8_str = utf8_str.encode("utf-8")
 
       out_str = row["c"][0]["v"]
       self.assertEqual(out_str.encode("utf-8"), utf8_str)

@@ -1041,7 +1041,7 @@ class DataTable(object):
     }
     encoder = DataTableJSONEncoder()
     return "%s(%s);" % (response_handler,
-                        encoder.encode(response_obj).encode("utf-8"))
+                        encoder.encode(response_obj))
 
   def ToResponse(self, columns_order=None, order_by=(), tqx=""):
     """Writes the right response according to the request string passed in tqx.
